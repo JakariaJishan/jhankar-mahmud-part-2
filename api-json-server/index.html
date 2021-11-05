@@ -6,5 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <h1>json > javascript object notation</h1>
+    <ul id="uniqueId"></ul>
+
+    <script>
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((json) => displayUser(json))
+        .catch((error) => console.log(error));
+
+      function displayUser(users) {
+        // console.log("hello", users.name);
+        let userName = users.map((user) => {
+          return user.name;
+        });
+        let ul = document.getElementById("uniqueId");
+
+        for (let i = 0; i < userName.length; i++) {
+          let users = userName[i];
+          let li = document.createElement("li");
+          li.innerText = users;
+
+          ul.appendChild(li);
+          // console.log(li);
+          // document.body.appendChild(li);
+        }
+        // console.log(userName);
+      }
+    </script>
+  </body>
 </html>
