@@ -7,18 +7,17 @@
     <title>Document</title>
   </head>
   <body>
-    <h1 id="userInfo">
-      <span style="color: gray; font-size: 16px">Loading...</span>
+    <h1 id="task">
+      <span style="color: gray; font-size: 20px">do something ...</span>
     </h1>
+    <span>go to web. <a href="" id="link">click here...</a></span>
+
     <script>
-      fetch("https://randomuser.me/api")
+      fetch("http://www.boredapi.com/api/activity/")
         .then((res) => res.json())
         .then((data) => {
-          //   console.log(data);
-          const user = data.results[0].name;
-          document.getElementById(
-            "userInfo"
-          ).innerHTML = `${user.title} ${user.first} ${user.last}`;
+          document.getElementById("task").innerHTML = data.activity;
+          document.getElementById("link").innerHTML = data.link;
         });
     </script>
   </body>
